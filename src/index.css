@@ -13,15 +13,27 @@ body {
   height: 100vh;
 }
 .card-box {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 .card {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border: 2px solid black;
+  width: 100px;
+  height: 120px;
+  background-color: greenyellow;
+  transition: 0.5s;
+}
+
+.card:hover {
+  width: 106px;
+  height: 126px;
+  transition: 0.5s;
 }

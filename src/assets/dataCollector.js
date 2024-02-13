@@ -10,7 +10,7 @@ const limit = 5;
 
 async function getData(offset) {
   const response = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=80`
+    `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=60`
   );
 
   const data = await response.json();
@@ -24,6 +24,7 @@ async function pickPokemon(dataArray, skip) {
     pokemonArray.push({
       name: dataArray[i].name,
       logo: picture.sprites.front_default,
+      clicked: false,
     });
   }
 
@@ -43,6 +44,6 @@ function randomNumber(max) {
 let offset = randomNumber(600);
 const data = await getData(offset);
 
-export const pokemonArray = await pickPokemon(data, 4);
+export const pokemonArray = await pickPokemon(data, 3);
 
 console.log(pokemonArray);
