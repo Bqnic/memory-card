@@ -8,7 +8,9 @@ export default function EndGameScreen({
   return (
     <div className="endScreen">
       <p>Game over!</p>
-      <p>Gamemode: {gamemode}</p>
+      <p>
+        Gamemode: {gamemode === 0 ? "Easy" : gamemode === 1 ? "Medium" : "Hard"}
+      </p>
       <p>Score: {score}</p>
       <p>High score: {highScore}</p>
       <button

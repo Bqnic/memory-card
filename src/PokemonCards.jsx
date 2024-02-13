@@ -3,6 +3,7 @@ import getPokemonArray from "./assets/dataCollector";
 
 export default function PokemonCards({
   setEndGame,
+  setWinScreen,
   score,
   setScore,
   highScore,
@@ -10,13 +11,12 @@ export default function PokemonCards({
   gamemode,
 }) {
   const [pokemonState, setPokemonState] = useState([]);
+  const numberOfCards = gamemode === 0 ? 5 : gamemode === 1 ? 12 : 20;
 
   useEffect(() => {
     let ignore = false;
     async function fetchData() {
-      const pokemonArray = await getPokemonArray(
-        gamemode === 0 ? 5 : gamemode === 1 ? 12 : 20
-      );
+      const pokemonArray = await getPokemonArray(numberOfCards);
 
       if (!ignore) setPokemonState(pokemonArray);
     }
@@ -49,7 +49,12 @@ export default function PokemonCards({
       setEndGame(true);
     } else {
       copiedState[index].clicked = true;
-      setScore(score + 1);
+      setScore((score) => score + 1);
+
+      if (score + 1 === numberOfCards) {
+        if (score + 1 > highScore) setHighScore(score + 1);
+        setWinScreen(true);
+      }
     }
   }
 

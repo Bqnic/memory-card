@@ -1,11 +1,13 @@
 import PokemonCards from "./PokemonCards";
 import EndGameScreen from "./EndGameScreen";
 import MainMenu from "./MainMenu";
+import WinScreen from "./WinScreen";
 import { useState } from "react";
 
 function App() {
   const [mainMenu, setMainMenu] = useState(true);
   const [endGame, setEndGame] = useState(false);
+  const [winScreen, setWinScreen] = useState(false);
   const [score, setScore] = useState(0);
   const [easyHighScore, setEasyHighScore] = useState(0);
   const [mediumHighScore, setMediumHighScore] = useState(0);
@@ -20,6 +22,25 @@ function App() {
           setScore={setScore}
           setMainMenu={setMainMenu}
         ></MainMenu>
+      </>
+    );
+  }
+
+  if (winScreen === true) {
+    return (
+      <>
+        <WinScreen
+          setWinScreen={setWinScreen}
+          setMainMenu={setMainMenu}
+          score={score}
+          highScore={
+            gamemode === 0
+              ? easyHighScore
+              : gamemode === 1
+              ? mediumHighScore
+              : hardHighScore
+          }
+        ></WinScreen>
       </>
     );
   }
@@ -48,6 +69,7 @@ function App() {
     <>
       <PokemonCards
         setEndGame={setEndGame}
+        setWinScreen={setWinScreen}
         score={score}
         setScore={setScore}
         highScore={
