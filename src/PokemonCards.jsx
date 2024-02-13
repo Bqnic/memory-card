@@ -26,7 +26,7 @@ export default function PokemonCards({
     return () => {
       ignore = true;
     };
-  }, [gamemode]);
+  }, []);
 
   function shufflePokemonArray(index) {
     let copiedState = [...pokemonState];
@@ -42,8 +42,8 @@ export default function PokemonCards({
     }
   }
 
+  //if this check passes, the game ends and this component unmounts
   function checkForEnd(copiedState, index) {
-    //if this check passes, the game ends and this component unmounts
     if (copiedState[index].clicked === true) {
       if (score > highScore) setHighScore(score);
       setEndGame(true);
