@@ -6,7 +6,14 @@
 //make an array of objects, object should have the name of the pokemon and it's picture
 //return the array
 
-const limit = 5;
+const dispersion = 3;
+
+export default async function getPokemonArray(size) {
+  let offset = randomNumber(600);
+  const data = await getData(offset);
+
+  return await pickPokemon(data, size);
+}
 
 async function getData(offset) {
   const response = await fetch(
@@ -17,10 +24,12 @@ async function getData(offset) {
   return data.results;
 }
 
-async function pickPokemon(dataArray, skip) {
+async function pickPokemon(dataArray, size) {
   let pokemonArray = [];
-  for (let i = 0; i < limit * skip; i += skip) {
+
+  for (let i = 0; i < size * dispersion; i += dispersion) {
     const picture = await getPokemonPicture(dataArray[i].url);
+
     pokemonArray.push({
       name: dataArray[i].name,
       logo: picture.sprites.front_default,
@@ -40,10 +49,3 @@ async function getPokemonPicture(url) {
 function randomNumber(max) {
   return Math.floor(Math.random() * max);
 }
-
-let offset = randomNumber(600);
-const data = await getData(offset);
-
-export const pokemonArray = await pickPokemon(data, 3);
-
-console.log(pokemonArray);

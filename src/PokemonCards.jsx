@@ -1,13 +1,36 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { pokemonArray } from "./assets/dataCollector";
+import { useEffect, useState } from "react";
+import getPokemonArray from "./assets/dataCollector";
 
-export default function PokemonCards() {
-  const [pokemonState, setPokemonState] = useState(pokemonArray);
+export default function PokemonCards({
+  setEndGame,
+  score,
+  setScore,
+  highScore,
+  setHighScore,
+  gamemode,
+}) {
+  const [pokemonState, setPokemonState] = useState([]);
+
+  useEffect(() => {
+    let ignore = false;
+    async function fetchData() {
+      const pokemonArray = await getPokemonArray(
+        gamemode === 0 ? 5 : gamemode === 1 ? 12 : 20
+      );
+
+      if (!ignore) setPokemonState(pokemonArray);
+    }
+
+    fetchData();
+
+    return () => {
+      ignore = true;
+    };
+  }, [gamemode]);
 
   function shufflePokemonArray(index) {
     let copiedState = [...pokemonState];
-    copiedState[index].clicked = true;
+    checkForEnd(copiedState, index);
     shuffleArray(copiedState);
     setPokemonState(copiedState);
   }
@@ -16,6 +39,17 @@ export default function PokemonCards() {
     for (let i = array.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  function checkForEnd(copiedState, index) {
+    //if this check passes, the game ends and this component unmounts
+    if (copiedState[index].clicked === true) {
+      if (score > highScore) setHighScore(score);
+      setEndGame(true);
+    } else {
+      copiedState[index].clicked = true;
+      setScore(score + 1);
     }
   }
 
