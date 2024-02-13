@@ -1,5 +1,10 @@
+import PokemonCards from "./PokemonCards";
 function App() {
-  return <></>;
+  return (
+    <>
+      <PokemonCards></PokemonCards>
+    </>
+  );
 }
 
 export default App;
