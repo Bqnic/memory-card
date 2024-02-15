@@ -84,7 +84,7 @@ export default function PokemonCards({
   }
 
   return (
-    <>
+    <div className="game">
       <div className="score-box">
         <p>Current score: {score}</p>
         <p>Highscore: {highScore}</p>
@@ -102,6 +102,6 @@ export default function PokemonCards({
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }

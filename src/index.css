@@ -158,3 +158,46 @@ body {
   transform: rotate(360deg);
   transition: 2s;
 }
+
+@media screen and (max-width: 700px) {
+  .score-box {
+    position: relative;
+    font-size: 2rem;
+  }
+  .card-box {
+    height: 75vh;
+  }
+  .game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .card {
+    width: 88px;
+    height: 115px;
+    transition: 0.5s;
+  }
+  .card:hover {
+    width: 90px;
+    height: 116px;
+    transition: 0.5s;
+  }
+  .main-menu {
+    font-size: 3.5rem;
+    gap: 40px;
+  }
+  .main-menu .buttons {
+    gap: 10px;
+  }
+  .main-menu .buttons button {
+    height: 50px;
+    width: 100px;
+    font-size: 1.5rem;
+    padding: 12px;
+  }
+  .main-menu .buttons button:hover {
+    height: 55px;
+    width: 110px;
+  }
+}
