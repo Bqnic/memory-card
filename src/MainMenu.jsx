@@ -4,6 +4,7 @@ export default function MainMenu({ setGamemode, setScore, setMainMenu }) {
       <p>
         Memory Card <img id="pokeball" src="../pokeball.png" alt="" />
       </p>
+      <p>Don't click the same card twice!</p>
       <div className="buttons">
         <button
           onClick={() => {

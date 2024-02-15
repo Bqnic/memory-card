@@ -66,6 +66,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+.main-menu p:nth-child(2) {
+  font-size: 2rem;
+}
 .main-menu .buttons {
   display: flex;
   justify-content: center;
