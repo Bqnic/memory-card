@@ -20,15 +20,18 @@ body {
   font-family: "Pokemon";
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 1.5rem;
   background-image: url("../easy.jpg");
 }
 .card-box {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 10px;
 }
 .card {
@@ -37,19 +40,17 @@ body {
   align-items: center;
   flex-direction: column;
   border: 2px solid black;
-  width: 100px;
-  height: 120px;
+  width: 120px;
+  height: 135px;
   background-color: greenyellow;
   transition: 0.5s;
 }
 .card:hover {
-  width: 106px;
-  height: 126px;
+  width: 130px;
+  height: 144px;
   transition: 0.5s;
 }
 .main-menu {
-  height: 100vh;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,4 +71,25 @@ body {
   height: 65px;
   width: 130px;
   transition: 0.5s;
+}
+@keyframes load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#loading {
+  animation: load 1.5s;
+  animation-iteration-count: infinite;
+}
+.loading-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  font-size: 2.8rem;
 }

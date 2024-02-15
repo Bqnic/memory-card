@@ -11,6 +11,7 @@ export default function PokemonCards({
   gamemode,
 }) {
   const [pokemonState, setPokemonState] = useState([]);
+  const [loadingState, setLoadingState] = useState(true);
   const numberOfCards = gamemode === 0 ? 5 : gamemode === 1 ? 12 : 20;
 
   //because useEffect runs twice in development mode, i use ignore variable to ignore the second data that got fetched
@@ -19,7 +20,10 @@ export default function PokemonCards({
     async function fetchData() {
       const pokemonArray = await getPokemonArray(numberOfCards);
 
-      if (!ignore) setPokemonState(pokemonArray);
+      if (!ignore) {
+        setPokemonState(pokemonArray);
+        setLoadingState(false);
+      }
     }
 
     fetchData();
@@ -57,6 +61,15 @@ export default function PokemonCards({
         setWinScreen(true);
       }
     }
+  }
+
+  if (loadingState === true) {
+    return (
+      <div className="loading-wrapper">
+        <img id="loading" src="../loading.png" alt="loading"></img>
+        <p>Picking random Pokemon...</p>
+      </div>
+    );
   }
 
   return (
