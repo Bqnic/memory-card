@@ -8,6 +8,10 @@
   font-weight: normal;
   font-style: normal;
 }
+:root {
+  --win-color: #10b981;
+  --lose-color: #ef4444;
+}
 * {
   margin: 0;
   padding: 0;
@@ -52,11 +56,26 @@ body {
 }
 .main-menu {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 6rem;
+  gap: 50px;
+}
+.main-menu p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-menu .buttons {
+  display: flex;
   justify-content: center;
   align-items: center;
   gap: 30px;
 }
-.main-menu button {
+.main-menu .buttons button,
+.win-screen button,
+.end-screen button {
   height: 60px;
   width: 120px;
   border-radius: 20px;
@@ -67,7 +86,7 @@ body {
   font-family: "Pokemon";
   transition: 0.5s;
 }
-.main-menu button:hover {
+.main-menu .buttons button:hover {
   height: 65px;
   width: 130px;
   transition: 0.5s;
@@ -92,4 +111,43 @@ body {
   align-items: center;
   gap: 15px;
   font-size: 2.8rem;
+}
+.win-screen,
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.8rem;
+  gap: 10px;
+}
+.win-screen p:first-child {
+  color: var(--win-color);
+  font-size: 5rem;
+}
+.end-screen p:first-child {
+  color: var(--lose-color);
+  font-size: 5rem;
+}
+.win-screen button,
+.end-screen button {
+  width: 250px;
+  height: 80px;
+}
+.win-screen button:hover,
+.end-screen button:hover {
+  width: 260px;
+  height: 85px;
+  transition: 0.5s;
+}
+.score-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px;
+  gap: 10px;
+  font-size: 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
 }

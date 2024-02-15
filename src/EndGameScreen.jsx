@@ -6,7 +6,7 @@ export default function EndGameScreen({
   setMainMenu,
 }) {
   return (
-    <div className="endScreen">
+    <div className="end-screen">
       <p>Game over!</p>
       <p>
         Gamemode: {gamemode === 0 ? "Easy" : gamemode === 1 ? "Medium" : "Hard"}

@@ -73,17 +73,23 @@ export default function PokemonCards({
   }
 
   return (
-    <div className="card-box">
-      {pokemonState.map((element, index) => (
-        <div
-          onClick={() => shufflePokemonArray(index)}
-          key={index}
-          className="card"
-        >
-          <img src={element.logo} alt={element.name} />
-          <p>{element.name}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <div className="score-box">
+        <p>Current score: {score}</p>
+        <p>Highscore: {highScore}</p>
+      </div>
+      <div className="card-box">
+        {pokemonState.map((element, index) => (
+          <div
+            onClick={() => shufflePokemonArray(index)}
+            key={index}
+            className="card"
+          >
+            <img src={element.logo} alt={element.name} />
+            <p>{element.name}</p>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

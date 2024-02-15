@@ -40,6 +40,7 @@ function App() {
               ? mediumHighScore
               : hardHighScore
           }
+          gamemode={gamemode}
         ></WinScreen>
       </>
     );
