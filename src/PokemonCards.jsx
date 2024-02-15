@@ -12,6 +12,7 @@ export default function PokemonCards({
 }) {
   const [pokemonState, setPokemonState] = useState([]);
   const [loadingState, setLoadingState] = useState(true);
+  const [backgroundState, setBackgroundState] = useState();
   const numberOfCards = gamemode === 0 ? 5 : gamemode === 1 ? 12 : 20;
 
   //because useEffect runs twice in development mode, i use ignore variable to ignore the second data that got fetched
@@ -32,6 +33,16 @@ export default function PokemonCards({
       ignore = true;
     };
   }, []);
+
+  useEffect(() => {
+    if (gamemode === 0) {
+      setBackgroundState("#86efac");
+    } else if (gamemode === 1) {
+      setBackgroundState("#fdba74");
+    } else {
+      setBackgroundState("#fca5a5");
+    }
+  }, [gamemode]);
 
   function shufflePokemonArray(index) {
     let copiedState = [...pokemonState];
@@ -84,6 +95,7 @@ export default function PokemonCards({
             onClick={() => shufflePokemonArray(index)}
             key={index}
             className="card"
+            style={{ backgroundColor: backgroundState }}
           >
             <img src={element.logo} alt={element.name} />
             <p>{element.name}</p>

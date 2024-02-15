@@ -46,7 +46,6 @@ body {
   border: 2px solid black;
   width: 120px;
   height: 135px;
-  background-color: greenyellow;
   transition: 0.5s;
 }
 .card:hover {
@@ -150,4 +149,12 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+#pokeball {
+  transform: rotate(0deg);
+  transition: 2s;
+}
+#pokeball:hover {
+  transform: rotate(360deg);
+  transition: 2s;
 }

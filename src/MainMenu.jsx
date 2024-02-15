@@ -2,7 +2,7 @@ export default function MainMenu({ setGamemode, setScore, setMainMenu }) {
   return (
     <div className="main-menu">
       <p>
-        Memory Card <img src="../pokeball.png" alt="" />
+        Memory Card <img id="pokeball" src="../pokeball.png" alt="" />
       </p>
       <div className="buttons">
         <button
