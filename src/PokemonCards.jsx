@@ -13,6 +13,7 @@ export default function PokemonCards({
   const [pokemonState, setPokemonState] = useState([]);
   const numberOfCards = gamemode === 0 ? 5 : gamemode === 1 ? 12 : 20;
 
+  //because useEffect runs twice in development mode, i use ignore variable to ignore the second data that got fetched
   useEffect(() => {
     let ignore = false;
     async function fetchData() {
